@@ -49,12 +49,20 @@ class EventListener implements Listener{
    public function onBreakBlock(BlockBreakEvent $event){
       $player = $event->getPlayer();
       $block = $event->getBlock();
+      #Try to implement to prevent bug
+      if($event->isCancelled()){
+          return;
+      }
       QuestManager::onQuestEvent($player, "breakblock");
    }
    
    public function onPlaceBlock(BlockPlaceEvent $event){
       $player = $event->getPlayer();
       $block = $event->getBlock();
+      #Try to implement to prevent bug
+      if($event->isCancelled()){
+          return;
+      }
       QuestManager::onQuestEvent($player, "placeblock");
    }
    
